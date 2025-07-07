@@ -2,55 +2,55 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Glowing Blue Flower 🌙✨</title>
+  <title>Magic Blue Bouquet ✨💙</title>
   <style>
     body {
       margin: 0;
-      background: radial-gradient(ellipse at center, #000020, #000000);
+      background: radial-gradient(circle at center, #000020 0%, #000000 100%);
       overflow: hidden;
     }
+
     .stars {
       position: absolute;
       width: 100%;
       height: 100%;
-      background: transparent;
     }
+
     .star {
       position: absolute;
       background: white;
       border-radius: 50%;
       opacity: 0.8;
-      animation: twinkle 2s infinite alternate;
+      animation: twinkle 3s infinite alternate;
     }
+
     @keyframes twinkle {
-      from { opacity: 0.2; }
+      from { opacity: 0.3; }
       to { opacity: 1; }
     }
 
     svg {
       display: block;
       margin: auto;
-      margin-top: 5%;
-      width: 300px;
-      height: 300px;
-      filter: drop-shadow(0 0 20px #00ffff);
+      position: relative;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 400px;
+      height: 400px;
+      filter: drop-shadow(0 0 30px #00ffff);
+      animation: pulse 2s infinite alternate;
     }
 
-    .stem, .leaf, .petal, .grass {
+    .part {
       opacity: 0;
       transform: scale(0);
       transform-origin: center;
     }
 
     .stem { animation: grow 1s forwards 0.2s; }
-    .leaf1 { animation: grow 1s forwards 0.4s; }
-    .leaf2 { animation: grow 1s forwards 0.6s; }
-    .petal1 { animation: grow 1s forwards 0.8s; }
-    .petal2 { animation: grow 1s forwards 1s; }
-    .petal3 { animation: grow 1s forwards 1.2s; }
-    .petal4 { animation: grow 1s forwards 1.4s; }
-    .grass1 { animation: grow 1s forwards 1.6s; }
-    .grass2 { animation: grow 1s forwards 1.8s; }
+    .leaves { animation: grow 1s forwards 0.5s; }
+    .flowers { animation: grow 1s forwards 0.8s; }
+    .grass { animation: grow 1s forwards 1.2s; }
 
     @keyframes grow {
       to {
@@ -59,36 +59,38 @@
       }
     }
 
-    svg { animation: pulse 2s infinite alternate; }
-
     @keyframes pulse {
-      from { transform: scale(1); }
-      to { transform: scale(1.02); }
+      from { transform: translateY(-50%) scale(1); }
+      to { transform: translateY(-50%) scale(1.03); }
     }
   </style>
 </head>
 <body>
   <div class="stars"></div>
-  <svg viewBox="0 0 64 64">
+
+  <svg viewBox="0 0 100 100">
     <!-- Stem -->
-    <line class="stem" x1="32" y1="30" x2="32" y2="64" stroke="#00ffff" stroke-width="2"/>
+    <line class="part stem" x1="50" y1="40" x2="50" y2="100" stroke="#00ffff" stroke-width="2"/>
+    
     <!-- Leaves -->
-    <ellipse class="leaf leaf1" cx="28" cy="50" rx="4" ry="8" fill="#00ffff"/>
-    <ellipse class="leaf leaf2" cx="36" cy="50" rx="4" ry="8" fill="#00ffff"/>
-    <!-- Petals -->
-    <circle class="petal petal1" cx="32" cy="30" r="6" fill="#00ffff"/>
-    <circle class="petal petal2" cx="32" cy="20" r="4" fill="#00ffff"/>
-    <circle class="petal petal3" cx="26" cy="25" r="4" fill="#00ffff"/>
-    <circle class="petal petal4" cx="38" cy="25" r="4" fill="#00ffff"/>
+    <path class="part leaves" d="M50 60 C45 55, 40 70, 50 75" fill="none" stroke="#00ffff" stroke-width="1.5"/>
+    <path class="part leaves" d="M50 60 C55 55, 60 70, 50 75" fill="none" stroke="#00ffff" stroke-width="1.5"/>
+    
+    <!-- Flowers -->
+    <circle class="part flowers" cx="50" cy="40" r="6" fill="#00ffff"/>
+    <circle class="part flowers" cx="45" cy="35" r="4" fill="#66ffff"/>
+    <circle class="part flowers" cx="55" cy="35" r="4" fill="#66ffff"/>
+    <circle class="part flowers" cx="48" cy="30" r="3" fill="#99ffff"/>
+    <circle class="part flowers" cx="52" cy="30" r="3" fill="#99ffff"/>
+    
     <!-- Grass -->
-    <line class="grass grass1" x1="30" y1="64" x2="25" y2="50" stroke="#00ffff" stroke-width="1"/>
-    <line class="grass grass2" x1="34" y1="64" x2="39" y2="50" stroke="#00ffff" stroke-width="1"/>
+    <line class="part grass" x1="48" y1="100" x2="40" y2="80" stroke="#00ffff" stroke-width="1"/>
+    <line class="part grass" x1="52" y1="100" x2="60" y2="80" stroke="#00ffff" stroke-width="1"/>
   </svg>
 
   <script>
-    // Create stars
     const starsContainer = document.querySelector('.stars');
-    for (let i = 0; i < 50; i++) {
+    for (let i = 0; i < 60; i++) {
       const star = document.createElement('div');
       star.classList.add('star');
       const size = Math.random() * 2 + 1;
@@ -96,7 +98,7 @@
       star.style.height = `${size}px`;
       star.style.left = `${Math.random() * 100}%`;
       star.style.top = `${Math.random() * 100}%`;
-      star.style.animationDelay = `${Math.random() * 2}s`;
+      star.style.animationDelay = `${Math.random() * 3}s`;
       starsContainer.appendChild(star);
     }
   </script>
