@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Magic Blue Flower 🌙✨</title>
+  <style>
+    body {
+      background: radial-gradient(#000020, #000000);
+      overflow: hidden;
+      margin: 0;
+    }
+
+    svg {
+      display: block;
+      margin: auto;
+      margin-top: 10%;
+      width: 200px;
+      height: 200px;
+      animation: grow 3s ease-out forwards, pulse 2s infinite alternate;
+      filter: drop-shadow(0 0 10px #00ffff);
+    }
+
+    .star {
+      position: absolute;
+      background: white;
+      border-radius: 50%;
+      opacity: 0.8;
+      animation: twinkle 2s infinite alternate;
+    }
+
+    @keyframes grow {
+      from {
+        transform: scale(0);
+      }
+      to {
+        transform: scale(1);
+      }
+    }
+
+    @keyframes pulse {
+      from {
+        transform: scale(1);
+      }
+      to {
+        transform: scale(1.05);
+      }
+    }
+
+    @keyframes twinkle {
+      from {
+        opacity: 0.3;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Flower SVG -->
+  <svg viewBox="0 0 64 64">
+    <!-- Stem -->
+    <line x1="32" y1="40" x2="32" y2="64" stroke="#00ffff" stroke-width="2"/>
+    <!-- Leaves -->
+    <ellipse cx="28" cy="50" rx="4" ry="8" fill="#00ffff"/>
+    <ellipse cx="36" cy="50" rx="4" ry="8" fill="#00ffff"/>
+    <!-- Petals -->
+    <circle cx="32" cy="32" r="8" fill="#00ffff"/>
+    <circle cx="32" cy="22" r="5" fill="#00ffff"/>
+    <circle cx="24" cy="28" r="5" fill="#00ffff"/>
+    <circle cx="40" cy="28" r="5" fill="#00ffff"/>
+    <circle cx="28" cy="40" r="5" fill="#00ffff"/>
+    <circle cx="36" cy="40" r="5" fill="#00ffff"/>
+  </svg>
+
+  <script>
+    // Generate random stars
+    const numStars = 30;
+    for(let i=0; i<numStars; i++){
+      const star = document.createElement('div');
+      star.classList.add('star');
+      star.style.width = `${Math.random()*3+1}px`;
+      star.style.height = star.style.width;
+      star.style.left = `${Math.random()*100}%`;
+      star.style.top = `${Math.random()*100}%`;
+      star.style.animationDelay = `${Math.random()*2}s`;
+      document.body.appendChild(star);
+    }
+  </script>
+</body>
+</html>
